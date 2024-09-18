@@ -39,3 +39,46 @@ Use kubectl to verify that the EKS cluster and its nodes are up and running.
 Cleanup
 To remove all resources, run the Terraform destroy command to delete the infrastructure.
 
+Set Script Behavior:
+
+set -e: Ensures the script exits immediately if any command fails.
+exec >> /var/log/init-script.log 2>&1: Logs all output and errors to /var/log/init-script.log.
+Update System:
+
+sudo apt update -y: Updates package lists.
+Install Docker:
+
+sudo apt install docker.io -y: Installs Docker.
+sudo usermod -aG docker ubuntu: Adds the ubuntu user to the Docker group.
+sudo systemctl enable --now docker: Enables and starts Docker service.
+Install AWS CLI:
+
+Downloads and installs the AWS CLI.
+Install Kubectl:
+
+Downloads and installs Kubectl, the Kubernetes command-line tool.
+Install eksctl:
+
+Downloads and installs eksctl for managing EKS clusters.
+Install Terraform:
+
+Adds HashiCorp’s APT repository, then installs Terraform.
+Install Trivy:
+
+Installs Trivy, a vulnerability scanner for container images.
+Install Argo CD:
+
+Uses Kubectl to create a namespace and install Argo CD.
+Install Helm:
+
+Installs Helm, a package manager for Kubernetes.
+Add Helm Repositories:
+
+Adds repositories for Prometheus, Grafana, and ingress-nginx.
+Install Prometheus, Grafana, and ingress-nginx:
+
+Uses Helm to install Prometheus, Grafana, and ingress-nginx in Kubernetes.
+This script sets up a comprehensive environment for Kubernetes and AWS, including monitoring and continuous deployment tools. Make sure you run this script with proper permissions and adjust it to fit your specific needs.
+
+
+
